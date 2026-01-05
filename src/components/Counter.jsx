@@ -3,9 +3,11 @@ import { useState, useEffect } from "react"
 function Counter (){
 const [count, setCount] = useState(0);
 const [isAutoClickerOn, setIsAutoClickerOn] = useState(false);
+const [history, setHistory] = useState([]);
 
 const handleIncrement = () => {
   setCount(count + 1);
+  setHistory([...history, count + 1]);
 }
 
 const handleDecrement = () => {
@@ -21,6 +23,10 @@ setIsAutoClickerOn(!isAutoClickerOn);
 const handleReset = () => {
     console.log("Counter has been reset!");
     setCount(0);
+}
+
+const handleClearHistory = () => {
+    setHistory([]);
 }
 
 useEffect (() => {
@@ -42,11 +48,17 @@ if (isAutoClickerOn) {
      <button onClick={handleIncrement} style={{ backgroundColor: "green", color: "white" }}>Level Up</button>
      <button onClick={handleDecrement} style={{ backgroundColor: "red", color: "white" }}>Level Down</button>
      <button onClick={handleReset}>Reset</button>
+     <button onClick={handleClearHistory}>Clear History</button>
      <button onClick={toggleAutoClicker}>
         { isAutoClickerOn ? "stop" : "start" }
      </button>
      {/* {count >= 10 ? <p>MAX POWER REACHED! ⚡</p> : <p></p>} */}
      {count >= 10 && <p>MAX POWER REACHED! ⚡</p>}
+     <ul>
+        {history.map((item, index) => (
+            <li key={index}>Level up to {item}</li>
+        ))}
+     </ul>
         </>
     )
 
