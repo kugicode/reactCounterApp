@@ -8,8 +8,10 @@ const [amount, setAmount] = useState(0);
 const [description, setDescription] = useState("");
 
 const handleIncrement = () => {
-  setBalance(prevBalance => prevBalance + 1);
-  setTransactions(prevTransactions => [...prevTransactions, balance + 1]);
+  setBalance(prevBalance => prevBalance + Number(amount));
+  setTransactions(prevTransactions => [...prevTransactions, `${description}: $${amount}`]);
+  setAmount(0);
+  setDescription("");
 }
 
 const handleDecrement = () => {
@@ -62,7 +64,7 @@ if (isAutoClickerOn) {
      {balance >= 10 && <p>MAX POWER REACHED! ⚡</p>}
      <ul>
         {transactions.map((item, index) => (
-            <li key={index}>Level up to {item}</li>
+            <li key={index}>{item}</li>
         ))}
      </ul>
         </>
