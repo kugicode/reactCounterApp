@@ -15,8 +15,15 @@ const handleIncrement = () => {
 }
 
 const handleDecrement = () => {
-   if (balance > 0){
-    setBalance(balance - 1)
+   if (balance >= amount){
+    const expenseAmount = Number(amount);
+    setBalance(prev => prev - expenseAmount);
+    setTransactions(prev => [...prev, `Expense - ${description}: -$${expenseAmount}`]);
+    setAmount(0);
+    setDescription("");
+   }
+   else{
+    alert("Not enough balance!");
    }
 }
 
