@@ -8,6 +8,9 @@ const [amount, setAmount] = useState(0);
 const [description, setDescription] = useState("");
 
 const handleIncrement = () => {
+    if(description === ""){
+        return
+    }
   setBalance(prevBalance => prevBalance + Number(amount));
   setTransactions(prevTransactions => [...prevTransactions, `${description}: $${amount}`]);
   setAmount(0);
@@ -15,6 +18,9 @@ const handleIncrement = () => {
 }
 
 const handleDecrement = () => {
+    if(description === ""){
+        return
+    }
    if (balance >= amount){
     const expenseAmount = Number(amount);
     setBalance(prev => prev - expenseAmount);
