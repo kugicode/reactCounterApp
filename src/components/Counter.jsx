@@ -48,6 +48,10 @@ const handleClearHistory = () => {
   
 }
 
+const handleDeleteTransaction = (index) => {
+    setTransactions(prev => prev.filter((item, i) => i !== index))
+}
+
 useEffect (() => {
 if (isAutoClickerOn) {
     const interval = setInterval(() => {
@@ -77,7 +81,7 @@ if (isAutoClickerOn) {
      {balance >= 10 && <p>MAX POWER REACHED! ⚡</p>}
      <ul>
         {transactions.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index}>{item} <button onClick={() =>handleDeleteTransaction(index) }>X</button></li>
         ))}
      </ul>
         </>
