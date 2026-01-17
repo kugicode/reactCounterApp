@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import Counter from './components/Counter'
+import BudgetTracker from './components/BudgetTracker'
 
 function App() {
 
 
   return (
     <>
-    <Counter />
+    <BudgetTracker />
     </>
   )
 }

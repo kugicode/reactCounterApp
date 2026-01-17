@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-function Counter (){
+function BudgetTracker (){
 const [balance, setBalance] = useState(0);
 const [isAutoClickerOn, setIsAutoClickerOn] = useState(false);
 const [transactions, setTransactions] = useState([]);
@@ -12,7 +12,7 @@ const handleIncrement = () => {
         return
     }
   setBalance(prevBalance => prevBalance + Number(amount));
-  setTransactions(prevTransactions => [...prevTransactions, `${description}: $${amount}`]);
+  setTransactions(prevTransactions => [...prevTransactions, `Income + ${description}: $${amount}`]);
   setAmount(0);
   setDescription("");
 }
@@ -21,7 +21,7 @@ const handleDecrement = () => {
     if(description === ""){
         return
     }
-   if (balance >= amount){
+   if (balance >= Number(amount)){
     const expenseAmount = Number(amount);
     setBalance(prev => prev - expenseAmount);
     setTransactions(prev => [...prev, `Expense - ${description}: -$${expenseAmount}`]);
@@ -89,4 +89,4 @@ if (isAutoClickerOn) {
 
 } 
 
-export default Counter
+export default BudgetTracker
