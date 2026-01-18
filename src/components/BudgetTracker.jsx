@@ -81,7 +81,8 @@ if (isAutoClickerOn) {
      {balance >= 10 && <p>MAX POWER REACHED! ⚡</p>}
      <ul>
         {transactions.map((item, index) => (
-            <li key={index} style={{color: item.includes("Income")? "green" : "red"}}>{item} <button onClick={() =>handleDeleteTransaction(index) }>X</button></li>
+            <li key={index} style={{color: item.includes("Income")? "green" : "red"}}>{item} 
+            <button onClick={() =>handleDeleteTransaction(index) }>X</button></li>
         ))}
      </ul>
         </>
