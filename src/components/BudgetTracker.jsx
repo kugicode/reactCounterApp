@@ -8,7 +8,8 @@ const [amount, setAmount] = useState(0);
 const [description, setDescription] = useState("");
 
 const handleIncrement = () => {
-    if(description === ""){
+    if(description === "" || amount <=0){
+        alert("Please add a valid description amount!");
         return
     }
   setBalance(prevBalance => prevBalance + Number(amount));
@@ -18,7 +19,8 @@ const handleIncrement = () => {
 }
 
 const handleDecrement = () => {
-    if(description === ""){
+    if(description === "" || amount <= 0){
+        alert("Please enter a valid description amount!");
         return
     }
    if (balance >= Number(amount)){
