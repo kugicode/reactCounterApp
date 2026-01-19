@@ -84,7 +84,13 @@ if (isAutoClickerOn) {
      <ul>
         {transactions.map((item, index) => (
             <li key={index} style={{color: item.includes("Income")? "green" : "red"}}>{item} 
-            <button onClick={() =>handleDeleteTransaction(index) }>X</button></li>
+            <button onClick={() =>handleDeleteTransaction(index)} style={{
+                backgroundColor: "red",
+                color: "white",
+                padding: "2px 6px",
+                borderRadius: "6px",
+                marginLeft: "2px"
+            }}>X</button></li>
         ))}
      </ul>
         </>
