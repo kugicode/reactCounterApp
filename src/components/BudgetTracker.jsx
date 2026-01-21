@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 
 function BudgetTracker (){
+const [isFirstLoad, setIsFirstLoad] = useState(true);
 const [balance, setBalance] = useState(0);
 const [isAutoClickerOn, setIsAutoClickerOn] = useState(false);
 const [transactions, setTransactions] = useState([]);
@@ -53,6 +54,33 @@ const handleClearHistory = () => {
 const handleDeleteTransaction = (index) => {
     setTransactions(prev => prev.filter((item, i) => i !== index))
 }
+
+useEffect(() => {
+const savedBalance = localStorage.getItem("balance");
+if(savedBalance){
+    setBalance(JSON.parse(savedBalance));
+}
+
+const savedTransactions = localStorage.getItem("transactions");
+if(savedTransactions){
+    setTransactions(JSON.parse(savedTransactions));
+}
+
+setIsFirstLoad(false)
+
+}, []) // Empty array = runs once when app starts!
+
+useEffect(() => {
+    if(!isFirstLoad){
+ localStorage.setItem("balance", JSON.stringify(balance));
+    }
+},[balance]);
+
+useEffect(() => {
+    if(isFirstLoad){
+localStorage.setItem("transactions", JSON.stringify(transactions));
+    }
+},[transactions])
 
 useEffect (() => {
 if (isAutoClickerOn) {
