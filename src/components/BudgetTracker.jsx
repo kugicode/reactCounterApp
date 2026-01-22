@@ -44,6 +44,8 @@ const handleReset = () => {
     console.log("Counter has been reset!");
     setBalance(0);
     setTransactions([]);
+    localStorage.removeItem("balance");
+    localStorage.removeItem("transactions");
 }
 
 const handleClearHistory = () => {
@@ -77,7 +79,7 @@ useEffect(() => {
 },[balance]);
 
 useEffect(() => {
-    if(isFirstLoad){
+    if(!isFirstLoad){
 localStorage.setItem("transactions", JSON.stringify(transactions));
     }
 },[transactions])
