@@ -99,6 +99,7 @@ if (isAutoClickerOn) {
 
     return (
         <>
+        <h2 style={{textAlign: "center", color: "darkcyan"}}>Budget Tracker</h2>
         <h1 style={{ color: balance >= 10 ? 'orange' : 'black' }}>{ balance }</h1>
      <button onClick={handleIncrement} style={{ backgroundColor: "green", color: "white" }}>Level Up</button>
      <button onClick={handleDecrement} style={{ backgroundColor: "red", color: "white" }}>Level Down</button>
