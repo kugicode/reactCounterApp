@@ -101,6 +101,16 @@ if (isAutoClickerOn) {
         <>
         <h2 style={{textAlign: "center", color: "darkcyan"}}>Budget Tracker</h2>
         <h1 style={{ color: balance >= 10 ? 'orange' : 'black' }}>{ balance }</h1>
+        <h2>Total income: {transactions.filter(item => item.includes("Income"))
+        .map(item => Number(item.split("$")[1])) //extract the number here
+        .reduce((total, num) => total + num, 0)
+        }
+        </h2>
+        <h2>Total expense: { transactions.filter(item => item.includes("Expense"))
+        .map(item => Number(item.split("-$")[1]))
+        .reduce((total, num) => total + num, 0)
+         }
+        </h2>
      <button onClick={handleIncrement} style={{ backgroundColor: "green", color: "white" }}>Level Up</button>
      <button onClick={handleDecrement} style={{ backgroundColor: "red", color: "white" }}>Level Down</button>
      <button onClick={handleReset}>Reset</button>
